@@ -1,12 +1,12 @@
 package com.github.mrbean355.android.daggerhilt
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 //        val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        Log.i("MainActivity", viewModel.getData())
+
+        text_view.text = viewModel.getData()
     }
 }
 
@@ -30,6 +31,6 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun getData(): String {
-        return someRepository.loadData().joinToString()
+        return someRepository.loadData().joinToString(separator = " ")
     }
 }
