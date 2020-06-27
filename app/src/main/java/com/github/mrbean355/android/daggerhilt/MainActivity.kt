@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        // Alternative to 'by viewModels<MainViewModel>()':
+        // val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         text_view.text = viewModel.getData()
     }
