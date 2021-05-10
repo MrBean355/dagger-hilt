@@ -11,7 +11,7 @@ import kotlin.reflect.KClass
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
 class DaggerViewModelFactory @Inject constructor(
-        private val providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+    private val providers: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

@@ -1,12 +1,13 @@
 package com.github.mrbean355.android.daggerhilt
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -19,12 +20,13 @@ class MainActivity : AppCompatActivity() {
         // Alternative to 'by viewModels<MainViewModel>()':
         // val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        text_view.text = viewModel.getData()
+        findViewById<TextView>(R.id.text_view).text = viewModel.getData()
     }
 }
 
-class MainViewModel @ViewModelInject constructor(
-        private val someRepository: SomeRepository
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val someRepository: SomeRepository
 ) : ViewModel() {
 
     fun getData(): String {
