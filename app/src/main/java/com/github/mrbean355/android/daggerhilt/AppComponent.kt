@@ -13,10 +13,12 @@ import dagger.multibindings.IntoMap
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    AndroidSupportInjectionModule::class,
-    AppModule::class
-])
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        AppModule::class
+    ]
+)
 interface AppComponent : AndroidInjector<DemoApp> {
 
     @Component.Factory
